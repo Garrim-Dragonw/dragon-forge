@@ -195,3 +195,48 @@ canvas{width:100%;background:#050805;border:1px solid var(--line);border-radius:
   .layout{grid-template-columns:1fr}.sidebar{display:none}.page-grid,.chart-grid{grid-template-columns:1fr}
   .stats{grid-template-columns:repeat(2,1fr)}.grid-form,.measure-grid{grid-template-columns:1fr}
 }
+
+
+/* Alpha 0.1.1 - Fix logo login */
+.brand-row img{
+  width:96px !important;
+  height:96px !important;
+  object-fit:contain !important;
+  background:transparent !important;
+  padding:0 !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
+}
+
+.topbrand img{
+  object-fit:contain !important;
+  background:transparent !important;
+  padding:0 !important;
+}
+
+.logo-big{
+  width:min(300px,70vw) !important;
+  max-width:300px !important;
+  height:auto !important;
+  max-height:none !important;
+  object-fit:contain !important;
+  background:transparent !important;
+  padding:0 !important;
+}
+
+.login-card,
+.hero-card{
+  overflow:visible !important;
+}
+
+@media(max-width:1000px){
+  .brand-row{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+  .brand-row img{
+    width:150px !important;
+    height:auto !important;
+    max-height:none !important;
+  }
+}

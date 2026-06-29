@@ -16,3 +16,6 @@ Sostituisci i file nel repository GitHub, poi:
 1. Commit
 2. Push
 3. Netlify aggiorna automaticamente.
+
+## Alpha 0.1.1
+- Fix logo schermata login.
