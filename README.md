@@ -19,3 +19,6 @@ Sostituisci i file nel repository GitHub, poi:
 
 ## Alpha 0.1.1
 - Fix logo schermata login.
+
+## Alpha 0.1.2
+- Fix definitivo login: sostituito logo immagine con monogramma drago.

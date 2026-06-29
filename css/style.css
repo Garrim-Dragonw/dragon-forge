@@ -240,3 +240,33 @@ canvas{width:100%;background:#050805;border:1px solid var(--line);border-radius:
     max-height:none !important;
   }
 }
+
+
+/* Alpha 0.1.2 - Login clean: niente logo immagine nella login */
+.login-brand-clean{
+  align-items:center !important;
+}
+
+.login-monogram{
+  width:82px;
+  height:82px;
+  border-radius:24px;
+  display:grid;
+  place-items:center;
+  font-size:2.8rem;
+  background:linear-gradient(135deg, rgba(125,222,69,.22), rgba(53,127,32,.08));
+  border:1px solid var(--line2);
+  box-shadow:0 0 35px rgba(125,222,69,.18);
+}
+
+@media(max-width:1000px){
+  .login-brand-clean{
+    flex-direction:row !important;
+    align-items:center !important;
+  }
+  .login-monogram{
+    width:76px;
+    height:76px;
+    font-size:2.4rem;
+  }
+}
