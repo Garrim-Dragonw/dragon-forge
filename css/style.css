@@ -31,7 +31,7 @@ textarea{min-height:100px;resize:vertical}
 }
 .login-card{padding:28px;display:flex;flex-direction:column;justify-content:center}
 .hero-card{padding:30px;display:grid;place-items:center;overflow:visible}
-.logo-big{width:min(260px,62vw);max-height:320px;object-fit:contain;filter:drop-shadow(0 0 34px rgba(125,222,69,.25))}
+.logo-big{width:min(260px,62vw);height:auto;max-height:none;object-fit:contain;display:block;filter:drop-shadow(0 0 34px rgba(125,222,69,.25))}
 .brand-row{display:flex;align-items:center;gap:12px;margin-bottom:20px}
 .brand-row img,.topbrand img{object-fit:contain;border-radius:16px;background:#020402;padding:3px}
 .brand-row img{width:68px;height:68px}
