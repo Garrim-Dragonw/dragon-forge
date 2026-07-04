@@ -1,0 +1,43 @@
+/* ---------- PAGINA LOGIN ---------- */
+
+.login-page{
+
+}
+
+/* ---------- LOGIN CARD ---------- */
+
+.login-card{
+  overflow:visible!important;
+}
+
+/* ---------- HERO CARD ---------- */
+
+.hero-card{
+  overflow:visible!important;
+}
+
+/* ---------- BRANDING ---------- */
+
+.login-brand-clean{
+
+}
+
+.logo-big{
+  width:min(220px,54vw)!important;
+  max-width:220px!important;
+  height:auto!important;
+  max-height:260px!important;
+  object-fit:contain!important;
+  display:block!important;
+}
+
+/* ---------- TESTI ---------- */
+
+.claim{
+
+}
+
+.hint{
+
+}
+

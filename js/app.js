@@ -95,7 +95,22 @@ function demoData(){
         {date:"2026-06-10",name:"Lower A",adherence:85,exercises:"Pressa | 4 | 10 | 190 | 7\nLeg extension | 3 | 12 | 47.5 | 8\nLat machine | 3 | 10 | 47.5 | 7"},
         {date:"2026-06-17",name:"Lower A",adherence:90,exercises:"Pressa | 4 | 10 | 200 | 8\nLeg extension | 3 | 12 | 50 | 8\nLat machine | 3 | 10 | 50 | 8"}
       ]
-    }
+    },
+    {
+      id:uid(), name:"Adriano Casu.", goal:"Massa muscolare", code:"ADRIANO-CASU", packageCompleted:3, packageTotal:10, nextAppointment:"2026-06-29T18:30", appointmentProposal:null, notes:"Focus panca e upper. Buona aderenza.",
+      measurements:[
+        {date:"2026-05-30",weight:85.8,height:178,chest:102,waist:88,arm:35.5,leg:58,notes:"Partenza"},
+        {date:"2026-06-07",weight:86.2,height:178,chest:102.5,waist:87.5,arm:36,leg:58.5,notes:"Buona risposta"},
+        {date:"2026-06-14",weight:86.7,height:178,chest:103.2,waist:87.2,arm:36.4,leg:59,notes:"Carichi in salita"},
+        {date:"2026-06-21",weight:87.1,height:178,chest:104,waist:87,arm:36.8,leg:59.4,notes:"Ottimo"}
+      ],
+      sessions:[
+        {date:"2026-06-01",name:"Upper A",adherence:90,exercises:"Panca piana | 4 | 6 | 70 | 7\nRematore bilanciere | 4 | 8 | 60 | 7\nChest press | 3 | 10 | 40 | 8"},
+        {date:"2026-06-08",name:"Upper A",adherence:95,exercises:"Panca piana | 4 | 6 | 72.5 | 8\nRematore bilanciere | 4 | 8 | 62.5 | 8\nChest press | 3 | 10 | 42.5 | 8"},
+        {date:"2026-06-15",name:"Upper A",adherence:90,exercises:"Panca piana | 4 | 6 | 75 | 8\nRematore bilanciere | 4 | 8 | 65 | 8\nChest press | 3 | 10 | 45 | 8"},
+        {date:"2026-06-22",name:"Upper A",adherence:100,exercises:"Panca piana | 4 | 6 | 77.5 | 8\nRematore bilanciere | 4 | 8 | 67.5 | 8\nChest press | 3 | 10 | 47.5 | 8"}
+      ]
+    },
   ];
   return {clients};
 }
