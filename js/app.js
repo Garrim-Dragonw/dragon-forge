@@ -1,4 +1,4 @@
-const KEY="garrim_pt_mvp_v10_serie_righe_logo_fix";
+const KEY="dragon_forge_demo_v2_adriano";
 let data=JSON.parse(localStorage.getItem(KEY))||null;
 let activeId=null, session=null;
 const $=id=>document.getElementById(id);
@@ -99,16 +99,11 @@ function demoData(){
     {
       id:uid(), name:"Adriano Casu.", goal:"Massa muscolare", code:"ADRIANO-CASU", packageCompleted:3, packageTotal:10, nextAppointment:"2026-06-29T18:30", appointmentProposal:null, notes:"Focus panca e upper. Buona aderenza.",
       measurements:[
-        {date:"2026-05-30",weight:85.8,height:178,chest:102,waist:88,arm:35.5,leg:58,notes:"Partenza"},
-        {date:"2026-06-07",weight:86.2,height:178,chest:102.5,waist:87.5,arm:36,leg:58.5,notes:"Buona risposta"},
-        {date:"2026-06-14",weight:86.7,height:178,chest:103.2,waist:87.2,arm:36.4,leg:59,notes:"Carichi in salita"},
-        {date:"2026-06-21",weight:87.1,height:178,chest:104,waist:87,arm:36.8,leg:59.4,notes:"Ottimo"}
       ],
-      sessions:[
-        {date:"2026-06-01",name:"Upper A",adherence:90,exercises:"Panca piana | 4 | 6 | 70 | 7\nRematore bilanciere | 4 | 8 | 60 | 7\nChest press | 3 | 10 | 40 | 8"},
-        {date:"2026-06-08",name:"Upper A",adherence:95,exercises:"Panca piana | 4 | 6 | 72.5 | 8\nRematore bilanciere | 4 | 8 | 62.5 | 8\nChest press | 3 | 10 | 42.5 | 8"},
-        {date:"2026-06-15",name:"Upper A",adherence:90,exercises:"Panca piana | 4 | 6 | 75 | 8\nRematore bilanciere | 4 | 8 | 65 | 8\nChest press | 3 | 10 | 45 | 8"},
-        {date:"2026-06-22",name:"Upper A",adherence:100,exercises:"Panca piana | 4 | 6 | 77.5 | 8\nRematore bilanciere | 4 | 8 | 67.5 | 8\nChest press | 3 | 10 | 47.5 | 8"}
+      sessions:[        
+        {date:"2026-07-04",name:"Giorno A — Esplosività + gambe + upper",adherence:0,exercises:"Split Jump — max esplosività, stop se cala qualità | 3 | 3 per lato | 0 | 90\"\nSquat bilanciere — RIR 2 | 4 | 5 | 0 | 2'30\"-3'\nBulgarian Split Squat — controllato, no cedimento | 3 | 8 per lato | 0 | 90\"-2'\nLeg Curl — fermo 1\" in chiusura | 3 | 10-12 | 0 | 75\"-90\"\nPanca piana bilanciere — RIR 2 | 4 | 6 | 0 | 2'-2'30\"\nLat Machine presa neutra — RIR 1-2 | 3 | 8-10 | 0 | 90\"-2'\nRenegade Row — bacino stabile | 3 | 6-8 per lato | 0 | 90\""},
+        {date:"2026-07-04",name:"Giorno B — Catena posteriore + upper + braccia",adherence:0,exercises:"Romanian Deadlift RDL — RIR 2, eccentrica controllata | 4 | 6-8 | 0 | 2'30\"-3'\nLeg Press — RIR 2 | 3 | 8-10 | 0 | 2'\nPush Press — concentrica esplosiva, no cedimento | 4 | 5 | 0 | 2'\nGorilla Row — tronco stabile | 3 | 8-10 per lato | 0 | 90\"-2'\nPanca inclinata manubri — RIR 1-2 | 3 | 8-10 | 0 | 90\"\nFrench Press — superset 6A, discesa controllata | 3 | 10-12 | 0 | nessun recupero\nCurl manubri negativa lenta — superset 6B, eccentrica 3\" | 3 | 8-10 | 0 | 90\" dopo coppia\nPlank classico — glutei e addome contratti | 3 | 30-45\" | 0 | 60\""},
+        {date:"2026-07-04",name:"Giorno C — Addominali a casa",adherence:0,exercises:"Reverse Crunch lento — retroversione bacino | 4 | 12-15 | 0 | 45\"-60\"\nCrunch a gambe sollevate — tensione continua | 3 | 15-20 | 0 | 45\"\nSide Plank — corpo in linea, bacino alto | 3 | 30-45\" per lato | 0 | 45\"-60\"\nBear Plank Shoulder Tap — bacino fermo | 3 | 16-20 totali | 0 | 45\"-60\"\nMountain Climber lento — 2\" avanti + 2\" ritorno | 3 | 10-15 per lato | 0 | 45\"-60\""}
       ]
     },
   ];
