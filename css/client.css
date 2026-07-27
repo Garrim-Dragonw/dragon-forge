@@ -1,0 +1,213 @@
+/* ---------- WORKOUT EDIT ---------- */
+
+.client-edit-row{
+  display:grid;
+  grid-template-columns:34px 1.45fr .65fr .65fr .55fr .65fr;
+  gap:8px;
+  align-items:end;
+  padding:10px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:#050805;
+  margin:8px 0;
+}
+
+.client-edit-row label{
+  font-size:.72rem;
+  color:var(--green2);
+  font-weight:900;
+  text-transform:uppercase;
+}
+
+.client-edit-row .exercise-name{
+  font-weight:900;
+  color:var(--text);
+}
+
+.client-edit-row small{
+  color:var(--muted);
+}
+
+.client-edit-row input{
+  padding:10px;
+}
+
+.done-check{
+  width:22px;
+  height:22px;
+  accent-color:#7dde45;
+}
+
+.rest-btn{
+  padding:10px;
+  font-size:.82rem;
+}
+
+.save-client-workout{
+  margin-top:10px;
+}
+
+/* ---------- SESSION COUNTER ---------- */
+
+.session-counter{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:10px;
+  align-items:center;
+  background:linear-gradient(
+    90deg,
+    rgba(125,222,69,.18),
+    rgba(125,222,69,.04)
+  );
+  border:1px solid var(--line2);
+  border-radius:18px;
+  padding:14px;
+  margin-bottom:12px;
+}
+
+.session-counter b{
+  font-size:1.4rem;
+  color:var(--green2);
+}
+
+/* ---------- TIMER TOAST ---------- */
+
+.timer-toast{
+  position:fixed;
+  left:50%;
+  bottom:22px;
+  transform:translateX(-50%);
+  display:none;
+  padding:14px 18px;
+  background:#050805;
+  border:1px solid var(--line2);
+  border-radius:18px;
+  color:var(--green2);
+  font-weight:900;
+  z-index:120;
+  box-shadow:0 0 35px rgba(125,222,69,.22);
+}
+
+.timer-toast.show{
+  display:block;
+}
+
+/* ---------- NEXT SESSION ---------- */
+
+.next-session-card{
+  padding:14px;
+  margin-bottom:12px;
+  background:linear-gradient(
+    90deg,
+    rgba(125,222,69,.18),
+    rgba(125,222,69,.04)
+  );
+  border:1px solid var(--line2);
+  border-radius:18px;
+}
+
+.next-session-card h3{
+  margin:0 0 8px;
+  color:var(--green2);
+}
+
+.next-session-card .date-big{
+  font-size:1.25rem;
+  font-weight:900;
+}
+
+/* ---------- PROPOSAL BOX ---------- */
+
+.proposal-box{
+  padding:12px;
+  margin-top:10px;
+  background:rgba(125,222,69,.05);
+  border:1px dashed var(--line2);
+  border-radius:16px;
+}
+
+/* ---------- MOBILE ---------- */
+
+@media(max-width:760px){
+
+  .client-edit-row{
+    grid-template-columns:32px 1fr 1fr;
+  }
+
+  .client-edit-row .exercise-info{
+    grid-column:2 / -1;
+  }
+
+}
+
+/* ---------- MOBILE SHELL ---------- */
+
+.mobile-shell{
+  display:none;
+}
+
+/* ---------- CLIENT MOBILE ---------- */
+
+.client-mobile{
+  max-width:540px;
+  margin:0 auto;
+  padding:14px;
+}
+
+/* ---------- TRAINING HERO ---------- */
+
+.hero-training{
+  background:linear-gradient(
+    135deg,
+    rgba(125,222,69,.28),
+    rgba(18,33,15,.92)
+  );
+  border-color:var(--line2);
+}
+
+/* ---------- BOTTOM NAVIGATION ---------- */
+
+.bottom-nav{
+  position:sticky;
+  bottom:0;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:4px;
+  padding:8px;
+  background:#020402;
+  border-top:1px solid var(--line);
+}
+
+.bottom-nav button{
+  padding:10px 6px;
+  border-radius:12px;
+  font-size:.8rem;
+}
+
+/* ---------- MEASURE GRID ---------- */
+
+.measure-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+
+.measure-box{
+  padding:12px;
+  background:#050805;
+  border:1px solid var(--line);
+  border-radius:14px;
+}
+
+.measure-box small{
+  color:var(--green2);
+  font-size:.7rem;
+  font-weight:900;
+  text-transform:uppercase;
+}
+
+.measure-box b{
+  display:block;
+  margin-top:4px;
+  font-size:1.25rem;
+}

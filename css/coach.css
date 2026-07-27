@@ -1,0 +1,175 @@
+/* ---------- TOPBAR ---------- */
+
+.topbar{
+  height:76px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 20px;
+  background:rgba(2,4,2,.9);
+  border-bottom:1px solid var(--line);
+  backdrop-filter:blur(14px);
+  position:sticky;
+  top:0;
+  z-index:5;
+}
+
+/* ---------- TOP BRAND ---------- */
+
+.topbrand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.topbar-logo{
+  width:52px;
+  height:52px;
+  object-fit:contain;
+  padding:3px;
+  background:#020402;
+  border-radius:16px;
+}
+
+.topbrand h1{
+  margin:0;
+  color:var(--green2);
+  font-size:1.15rem;
+  letter-spacing:.5px;
+}
+
+.topbrand p{
+  margin:0;
+  color:var(--muted);
+}
+
+/* ---------- TOP ACTIONS ---------- */
+
+.top-actions{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+/* ---------- COACH LAYOUT ---------- */
+
+.layout{
+  max-width:1380px;
+  margin:0 auto;
+  padding:16px;
+  display:grid;
+  grid-template-columns:250px 1fr;
+  gap:16px;
+}
+
+/* ---------- SIDEBAR ---------- */
+
+.sidebar{
+  min-height:calc(100vh - 108px);
+  padding:16px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.nav-btn{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:13px;
+  border:1px solid transparent;
+  border-radius:14px;
+  cursor:pointer;
+}
+
+.nav-btn.active{
+  background:linear-gradient(
+    90deg,
+    rgba(125,222,69,.35),
+    rgba(125,222,69,.05)
+  );
+  border-color:var(--line2);
+}
+
+.nav-spacer{
+  flex:1;
+}
+
+/* ---------- PAGE GRID ---------- */
+
+.page-grid{
+  display:grid;
+  grid-template-columns:1.25fr .75fr;
+  gap:16px;
+}
+
+/* ---------- STATS GRID ---------- */
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin-bottom:16px;
+}
+
+/* ---------- CLIENT ROW ---------- */
+
+.client-row{
+  display:grid;
+  grid-template-columns:42px 1fr auto;
+  align-items:center;
+  gap:12px;
+  padding:12px;
+  background:rgba(255,255,255,.02);
+  border:1px solid var(--line);
+  border-radius:16px;
+  cursor:pointer;
+}
+
+/* ---------- COACH FORM ---------- */
+
+.grid-form{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:10px;
+}
+
+.grid-form textarea,
+.grid-form button{
+  grid-column:1 / -1;
+}
+
+/* ---------- CLIENT DETAIL ---------- */
+
+.client-detail-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:12px;
+  margin-bottom:14px;
+}
+
+.client-detail-header h2{
+  margin:0;
+  font-size:1.6rem;
+}
+
+/* ---------- WORKOUT TABLE ---------- */
+
+.workout-table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+.workout-table th,
+.workout-table td{
+  padding:10px 7px;
+  border-bottom:1px solid var(--line);
+  text-align:left;
+}
+
+.workout-table th{
+  color:var(--green2);
+  font-size:.76rem;
+  text-transform:uppercase;
+}

@@ -1,0 +1,75 @@
+/* ---------- CHART INTERACTION ---------- */
+
+.chart-click{
+  cursor:zoom-in;
+}
+
+/* ---------- CHART MODAL ---------- */
+
+.chart-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.88);
+  z-index:99;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:14px;
+}
+
+.chart-modal.open{
+  display:flex;
+}
+
+.chart-modal-card{
+  width:min(1100px,100%);
+  background:linear-gradient(180deg,#0c160b,#020402);
+  border:1px solid var(--line2);
+  border-radius:22px;
+  padding:14px;
+  box-shadow:0 0 60px rgba(125,222,69,.22);
+}
+
+.chart-modal-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-bottom:10px;
+}
+
+.chart-modal-head h3{
+  margin:0;
+  color:var(--green2);
+}
+
+.chart-modal canvas{
+  height:auto;
+  max-height:72vh;
+}
+
+/* ---------- CLIENT CHART GRID ---------- */
+
+.client-chart-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:12px;
+}
+
+/* ---------- CHART CANVAS ---------- */
+
+canvas{
+  width:100%;
+  margin-top:8px;
+  background:#050805;
+  border:1px solid var(--line);
+  border-radius:18px;
+}
+
+/* ---------- HIDDEN CHART MODAL ---------- */
+
+#chartModal.hidden{
+  display:none !important;
+  visibility:hidden !important;
+  pointer-events:none !important;
+}

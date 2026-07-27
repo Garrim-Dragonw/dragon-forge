@@ -1,0 +1,156 @@
+/* ---------- SHARED SURFACES ---------- */
+
+.login-card,
+.hero-card,
+.panel,
+.card,
+.mobile-card{
+  background:linear-gradient(
+    180deg,
+    rgba(12,22,11,.96),
+    rgba(3,5,3,.97)
+  );
+
+  border:1px solid var(--line);
+  border-radius:24px;
+  box-shadow:0 28px 80px rgba(0,0,0,.55);
+}
+
+/* ---------- PANELS ---------- */
+
+.panel{
+  padding:18px;
+}
+
+.panel h2,
+.panel h3,
+.card h3{
+  margin:0 0 12px;
+}
+
+/* ---------- CARDS ---------- */
+
+.card{
+  padding:15px;
+  margin-bottom:12px;
+}
+
+.mobile-card{
+  padding:16px;
+  margin-bottom:12px;
+}
+
+/* ---------- STATS ---------- */
+
+.stat{
+  padding:15px;
+  background:linear-gradient(
+    180deg,
+    #101a0f,
+    #050805
+  );
+  border:1px solid var(--line);
+  border-radius:18px;
+}
+
+.stat small{
+  display:block;
+  color:var(--green2);
+  text-transform:uppercase;
+  font-size:.72rem;
+  font-weight:900;
+}
+
+.stat b{
+  display:block;
+  margin:8px 0 3px;
+  font-size:1.9rem;
+}
+
+.stat span{
+  color:var(--muted);
+  font-size:.85rem;
+}
+
+/* ---------- LISTS ---------- */
+
+.list{
+  display:grid;
+  gap:10px;
+}
+
+/* ---------- AVATAR ---------- */
+
+.avatar{
+  width:42px;
+  height:42px;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(
+    135deg,
+    var(--green3),
+    var(--green)
+  );
+  border-radius:50%;
+  color:#061006;
+  font-weight:900;
+}
+
+/* ---------- RING ---------- */
+
+.ring{
+  width:48px;
+  height:48px;
+  display:grid;
+  place-items:center;
+  border:4px solid var(--green);
+  border-radius:50%;
+  color:var(--green2);
+  font-size:.74rem;
+}
+
+/* ---------- BADGE ---------- */
+
+.badge{
+  display:inline-block;
+  padding:5px 9px;
+  border:1px solid var(--line2);
+  border-radius:999px;
+  color:var(--green2);
+  font-size:.78rem;
+}
+
+/* ---------- TABS ---------- */
+
+.tabs{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin:10px 0 16px;
+}
+
+.tab{
+  width:auto;
+  background:#050805;
+  border:1px solid var(--line);
+  color:var(--text);
+  box-shadow:none;
+}
+
+.tab.active{
+  background:linear-gradient(
+    135deg,
+    var(--green3),
+    var(--green)
+  );
+  color:#061006;
+}
+
+/* ---------- PRICE IMAGE ---------- */
+
+.price-img{
+  width:100%;
+  border:1px solid var(--line2);
+  border-radius:18px;
+  box-shadow:0 0 35px rgba(125,222,69,.14);
+}

@@ -1,43 +1,82 @@
-/* ---------- PAGINA LOGIN ---------- */
+/* ---------- LOGIN PAGE ---------- */
 
 .login-page{
-
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:390px 1fr;
+  gap:14px;
+  padding:14px;
 }
 
 /* ---------- LOGIN CARD ---------- */
 
 .login-card{
-  overflow:visible!important;
+  padding:28px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
 }
 
 /* ---------- HERO CARD ---------- */
 
 .hero-card{
-  overflow:visible!important;
+  padding:30px;
+  display:grid;
+  place-items:center;
+  overflow:visible;
 }
 
-/* ---------- BRANDING ---------- */
+/* ---------- LOGIN BRAND ---------- */
 
-.login-brand-clean{
+.brand-row{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:20px;
+}
 
+.login-logo{
+  width:68px;
+  height:68px;
+  object-fit:contain;
+  padding:3px;
+  background:#020402;
+  border-radius:16px;
+}
+
+.brand-row h1{
+  margin:0;
+  color:var(--green2);
+  letter-spacing:.5px;
+}
+
+.brand-row p{
+  margin:0;
+  color:var(--muted);
 }
 
 .logo-big{
-  width:min(220px,54vw)!important;
-  max-width:220px!important;
-  height:auto!important;
-  max-height:260px!important;
-  object-fit:contain!important;
-  display:block!important;
+  width:min(260px,62vw);
+  height:auto;
+  max-height:none;
+  object-fit:contain;
+  display:block;
+  filter:drop-shadow(
+    0 0 34px rgba(125,222,69,.25)
+  );
 }
 
-/* ---------- TESTI ---------- */
+/* ---------- LOGIN TEXT ---------- */
 
 .claim{
-
+  margin:0 0 18px;
+  color:var(--green2);
+  font-size:1.15rem;
+  font-weight:900;
 }
 
 .hint{
-
+  color:var(--muted);
+  font-size:.9rem;
+  line-height:1.45;
 }
-
