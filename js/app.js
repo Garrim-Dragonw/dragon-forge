@@ -1,10 +1,9 @@
+import { $, uid, esc } from "./utils.js";
+import { saveData } from "./storage.js";
 const KEY="dragon_forge_demo_v2_adriano";
 let data=JSON.parse(localStorage.getItem(KEY))||null;
 let activeId=null, session=null;
-const $=id=>document.getElementById(id);
-const uid=()=>Math.random().toString(36).slice(2)+Date.now().toString(36);
-const save=()=>localStorage.setItem(KEY,JSON.stringify(data));
-const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+const save=()=>saveData(KEY,data);
 const activeClient=()=>data.clients.find(c=>c.id===activeId);
 
 function sessionDoneCount(c){
