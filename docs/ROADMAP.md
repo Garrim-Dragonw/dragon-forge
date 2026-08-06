@@ -26,7 +26,7 @@ Rendere il codice modulare, ordinato e facilmente mantenibile.
 
 🟢 storage.js
 
-🟡 auth.js
+🟢 auth.js
 
 ⚪ coach.js
 
@@ -35,6 +35,8 @@ Rendere il codice modulare, ordinato e facilmente mantenibile.
 ⚪ workouts.js
 
 ⚪ charts.js
+
+🟢 seed.js
 
 ### Struttura
 
