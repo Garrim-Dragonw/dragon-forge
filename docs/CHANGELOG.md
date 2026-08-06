@@ -33,7 +33,7 @@ Data: Agosto 2026
 
 ☐ Separazione completa di app.js
 
-☐ auth.js
+v auth.js
 
 ☐ coach.js
 
@@ -43,9 +43,9 @@ Data: Agosto 2026
 
 ☐ charts.js
 
-☐ storage.js
+V storage.js
 
-☐ utils.js
+V utils.js
 
 ---
 

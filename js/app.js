@@ -1,5 +1,6 @@
 import { $, uid, esc } from "./utils.js";
 import { saveData } from "./storage.js";
+import { setupAuth } from "./auth.js";
 const KEY="dragon_forge_demo_v2_adriano";
 let data=JSON.parse(localStorage.getItem(KEY))||null;
 let activeId=null, session=null;
@@ -128,20 +129,51 @@ if(!data) resetDemo(); else activeId=data.clients[0]?.id;
 
 $("resetDemoBtn").onclick=()=>{if(confirm("Resettare i dati demo?"))resetDemo()};
 
-$("loginBtn").onclick=()=>{
-  const role=$("loginRole").value, code=$("loginCode").value.trim();
-  if(role==="coach"&&code==="coach123"){session={role:"coach"};showCoach();return}
-  if(role==="client"){
-    const found=data.clients.find(c=>(c.code||"").toLowerCase()===code.toLowerCase());
-    if(found){session={role:"client",clientId:found.id};showClient(found.id);return}
-  }
-  alert("Codice non valido");
-};
-function hideAll(){$("loginPage").classList.add("hidden");$("coachApp").classList.add("hidden");$("clientApp").classList.add("hidden")}
-function logout(){hideAll();$("loginPage").classList.remove("hidden")}
-$("logoutBtn").onclick=logout;$("sideLogout").onclick=logout;$("clientLogoutBtn").onclick=logout;
-function showCoach(){hideAll();$("coachApp").classList.remove("hidden");renderAll()}
-function showClient(id){hideAll();$("clientApp").classList.remove("hidden");renderClient(id)}
+function hideAll(){
+  $("loginPage").classList.add("hidden");
+  $("coachApp").classList.add("hidden");
+  $("clientApp").classList.add("hidden");
+}
+
+function logout(){
+  hideAll();
+  $("loginPage").classList.remove("hidden");
+}
+
+function showCoach(){
+  hideAll();
+  $("coachApp").classList.remove("hidden");
+  renderAll();
+}
+
+function showClient(id){
+  hideAll();
+  $("clientApp").classList.remove("hidden");
+  renderClient(id);
+}
+
+setupAuth({
+  getClients: () => data.clients,
+
+  onCoachLogin: () => {
+    session = {
+      role: "coach"
+    };
+
+    showCoach();
+  },
+
+  onClientLogin: client => {
+    session = {
+      role: "client",
+      clientId: client.id
+    };
+
+    showClient(client.id);
+  },
+
+  onLogout: logout
+});
 
 document.querySelectorAll(".nav-btn[data-page]").forEach(btn=>btn.onclick=()=>{
   document.querySelectorAll(".nav-btn").forEach(b=>b.classList.remove("active"));
