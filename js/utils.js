@@ -15,3 +15,24 @@ export const esc = s =>
         "'": "&#039;"
       })[m]
   );
+
+  /* =========================================
+   DATA PARSING
+========================================= */
+
+export function parseRows(exercises){
+  return String(exercises || "")
+    .split("\n")
+    .filter(Boolean)
+    .map((line, index) => {
+      const parts = line.split("|").map(value => value.trim());
+
+      return {
+        name: parts[0] || line,
+        sets: parts[1] || "",
+        reps: parts[2] || "",
+        load: parts[3] || "",
+        setsDone: parts[4] || ""
+      };
+    });
+}

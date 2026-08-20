@@ -1,7 +1,8 @@
-import { $, uid, esc } from "./utils.js";
+import { $, uid, esc, parseRows } from "./utils.js";
 import { saveData } from "./storage.js";
 import { setupAuth } from "./auth.js";
 import { createSeedData } from "./seed.js";
+import { renderCharts, renderClientCharts, setupChartInteractions } from "./charts.js";
 const KEY="dragon_forge_demo_v2_adriano";
 let data=JSON.parse(localStorage.getItem(KEY))||null;
 let activeId=null, session=null;
@@ -116,7 +117,7 @@ setupAuth({
 
   onLogout: logout
 });
-
+setupChartInteractions();
 document.querySelectorAll(".nav-btn[data-page]").forEach(btn=>btn.onclick=()=>{
   document.querySelectorAll(".nav-btn").forEach(b=>b.classList.remove("active"));
   btn.classList.add("active");
@@ -194,12 +195,6 @@ function renderLatest(c){
   const items=[["Peso",m.weight?"{v} kg".replace("{v}",m.weight):"--"],["Altezza",m.height?"{v} cm".replace("{v}",m.height):"--"],["Torace",m.chest?"{v} cm".replace("{v}",m.chest):"--"],["Vita",m.waist?"{v} cm".replace("{v}",m.waist):"--"],["Braccia",m.arm?"{v} cm".replace("{v}",m.arm):"--"],["Gamba",m.leg?"{v} cm".replace("{v}",m.leg):"--"]];
   $("latestMeasures").innerHTML=items.map(i=>`<div class="measure-box"><small>${i[0]}</small><b>${i[1]}</b></div>`).join("");
 }
-function parseRows(exercises){
-  return String(exercises||"").split("\n").filter(Boolean).map((l,i)=>{
-    const p=l.split("|").map(x=>x.trim());
-    return {name:p[0]||l,sets:p[1]||"",reps:p[2]||"",load:p[3]||"",setsDone:p[4]||""};
-  });
-}
 function workoutTable(exercises){
   return `<table class="workout-table"><thead><tr><th>#</th><th>Esercizio</th><th>Serie</th><th>Reps</th><th>Carico</th><th>Serie fatte</th></tr></thead><tbody>`+
   parseRows(exercises).map((r,i)=>`<tr><td>${i+1}</td><td>${esc(r.name)}</td><td>${esc(r.sets)}</td><td>${esc(r.reps)}</td><td>${esc(r.load)}</td><td>${esc(r.setsDone)}</td></tr>`).join("")+`</tbody></table>`;
@@ -235,42 +230,6 @@ function renderMeasures(c){
     <div class="measure-box"><small>Gamba</small><b>${esc(m.leg)} cm</b></div>
   </div><p class="muted">${esc(m.notes||'')}</p></div>`).join("");
 }
-var chartStore = chartStore || {};
-function drawLine(canvasId, labels, series, unit){
-  if(!chartStore) chartStore = {};
-  chartStore[canvasId] = {labels, series, unit};
-  const can=$(canvasId);
-  if(!can) return;
-  drawLineOnCanvas(can, labels, series, unit);
-}
-function drawLineOnCanvas(can, labels, series, unit){
-  const ctx=can.getContext("2d");ctx.clearRect(0,0,can.width,can.height);
-  ctx.fillStyle="#9eaa99";ctx.font="15px system-ui";
-  if(!labels.length||!series.length){ctx.fillText("Nessun dato.",30,60);return}
-  const all=series.flatMap(s=>s.values).filter(v=>!isNaN(v));
-  if(!all.length){ctx.fillText("Nessun dato numerico.",30,60);return}
-  const min=Math.min(...all)-1,max=Math.max(...all)+1,pad=48,w=can.width-pad*2,h=can.height-pad*2;
-  ctx.strokeStyle="#243924";ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(pad,pad);ctx.lineTo(pad,pad+h);ctx.lineTo(pad+w,pad+h);ctx.stroke();
-  const colors=["#7dde45","#b7ff7a","#4b8a2d","#f08a22","#d9ffbf"];
-  series.forEach((s,si)=>{
-    ctx.strokeStyle=colors[si%colors.length];ctx.lineWidth=4;ctx.beginPath();
-    s.values.forEach((v,i)=>{const x=pad+(labels.length===1?0.5:i/(labels.length-1))*w,y=pad+h-((v-min)/(max-min))*h;if(i)ctx.lineTo(x,y);else ctx.moveTo(x,y)});
-    ctx.stroke();ctx.fillStyle=colors[si%colors.length];
-    s.values.forEach((v,i)=>{const x=pad+(labels.length===1?0.5:i/(labels.length-1))*w,y=pad+h-((v-min)/(max-min))*h;ctx.beginPath();ctx.arc(x,y,6,0,Math.PI*2);ctx.fill();ctx.fillText(String(v),x-12,y-12)});
-    ctx.fillText(s.name, pad+10, pad+22+si*22);
-  });
-  ctx.fillStyle="#f6f8f1";
-  labels.forEach((l,i)=>{const x=pad+(labels.length===1?0.5:i/(labels.length-1))*w;ctx.fillText(String(l).slice(5),x-22,pad+h+26)});
-}
-function openChart(canvasId, title){
-  const spec = chartStore[canvasId];
-  if(!spec) return;
-  $("chartModalTitle").textContent = title || "Grafico";
-  $("chartModal").classList.add("open");
-  const modalCanvas = $("modalChartCanvas");
-  setTimeout(()=>drawLineOnCanvas(modalCanvas, spec.labels, spec.series, spec.unit), 30);
-}
-
 document.addEventListener("click", e=>{
   const btn=e.target.closest && e.target.closest("[data-client-section]");
   if(btn){
@@ -278,33 +237,6 @@ document.addEventListener("click", e=>{
     if(target) target.scrollIntoView({behavior:"smooth",block:"start"});
   }
 });
-
-document.addEventListener("click", e=>{
-  if(e.target && e.target.classList && e.target.classList.contains("chart-click")){
-    openChart(e.target.id, e.target.dataset.chartTitle);
-  }
-});
-$("closeChartModal").onclick=()=>$("chartModal").classList.remove("open");
-$("chartModal").onclick=e=>{ if(e.target.id==="chartModal") $("chartModal").classList.remove("open"); };
-
-function renderCharts(c){
-  const ms=(c.measurements||[]).slice().sort((a,b)=>a.date.localeCompare(b.date));
-  drawLine("weightChart",ms.map(m=>m.date),[{name:"Peso kg",values:ms.map(m=>Number(m.weight))}],"kg");
-  drawLine("measureChart",ms.map(m=>m.date),[
-    {name:"Torace",values:ms.map(m=>Number(m.chest))},
-    {name:"Vita",values:ms.map(m=>Number(m.waist))},
-    {name:"Braccia",values:ms.map(m=>Number(m.arm))},
-    {name:"Gamba",values:ms.map(m=>Number(m.leg))}
-  ],"cm");
-  const sessions=(c.sessions||[]).slice().sort((a,b)=>a.date.localeCompare(b.date));
-  const exerciseMap={};
-  sessions.forEach(s=>parseRows(s.exercises).forEach(r=>{
-    const load=parseFloat(String(r.load).replace(",","."));
-    if(!isNaN(load)){exerciseMap[r.name]??=[]; exerciseMap[r.name].push(load)}
-  }));
-  const selected=Object.keys(exerciseMap).slice(0,3).map(name=>({name,values:exerciseMap[name]}));
-  drawLine("strengthChart",sessions.map(s=>s.date),selected,"kg");
-}
 function renderArchives(){
   $("allSessions").innerHTML=data.clients.flatMap(c=>(c.sessions||[]).map(s=>`<div class="card"><span class="badge">${esc(c.name)} · ${esc(s.date)}</span><h3>${esc(s.name)}</h3>${workoutTable(s.exercises)}${coachClientEditsTable(s)}</div>`)).join("");
   $("allMeasures").innerHTML=data.clients.flatMap(c=>(c.measurements||[]).map(m=>`<div class="card"><span class="badge">${esc(c.name)} · ${esc(m.date)}</span><p>Peso ${esc(m.weight)}kg · Torace ${esc(m.chest)}cm · Vita ${esc(m.waist)}cm · Braccia ${esc(m.arm)}cm · Gamba ${esc(m.leg)}cm</p></div>`)).join("");
@@ -414,24 +346,7 @@ window.startRestTimer=function(seconds){
   tick();
   restInterval=setInterval(tick,1000);
 }
-function renderClientCharts(c){
-  const ms=(c.measurements||[]).slice().sort((a,b)=>a.date.localeCompare(b.date));
-  drawLine("clientWeightChart",ms.map(m=>m.date),[{name:"Peso kg",values:ms.map(m=>Number(m.weight))}],"kg");
-  drawLine("clientMeasureChart",ms.map(m=>m.date),[
-    {name:"Torace",values:ms.map(m=>Number(m.chest))},
-    {name:"Vita",values:ms.map(m=>Number(m.waist))},
-    {name:"Braccia",values:ms.map(m=>Number(m.arm))},
-    {name:"Gamba",values:ms.map(m=>Number(m.leg))}
-  ],"cm");
-  const sessions=(c.sessions||[]).slice().sort((a,b)=>a.date.localeCompare(b.date));
-  const exerciseMap={};
-  sessions.forEach(s=>parseRows(s.exercises).forEach(r=>{
-    const load=parseFloat(String(r.load).replace(",","."));
-    if(!isNaN(load)){exerciseMap[r.name]??=[]; exerciseMap[r.name].push(load)}
-  }));
-  const selected=Object.keys(exerciseMap).slice(0,3).map(name=>({name,values:exerciseMap[name]}));
-  drawLine("clientStrengthChart",sessions.map(s=>s.date),selected,"kg");
-}
+
 $("clientMeasureForm").onsubmit=e=>{e.preventDefault();addMeasure(session.clientId,"clientMeasure");e.target.reset();$("clientMeasureDate").valueAsDate=new Date();renderClient(session.clientId);alert("Misurazione salvata")};
 $("clientProposalForm").onsubmit=e=>{
   e.preventDefault();

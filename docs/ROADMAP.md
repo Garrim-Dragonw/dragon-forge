@@ -110,6 +110,42 @@ Vogliamo renderle più veloci da utilizzare.
 □ Evidenziazione della sezione attiva
 ---
 
+## Listino Prezzi
+
+### Obiettivo
+
+Trasformare il listino da semplice immagine ad uno strumento di lavoro rapido e professionale.
+
+---
+
+□ Nuova pagina dedicata al Listino
+
+□ Visualizzazione ottimizzata Desktop
+
+□ Visualizzazione ottimizzata Mobile
+
+□ Apertura immagine a schermo intero
+
+□ Zoom immagine
+
+□ Pulsante "Condividi Listino"
+
+□ Pulsante "Scarica Listino"
+
+□ Pulsante "Copia Link"
+
+□ Accesso rapido dalla Dashboard Coach
+
+□ Inserimento tra i Tasti Rapidi personalizzabili
+
+---
+
+### Obiettivo futuro
+
+Consentire al Coach di inviare il proprio listino ad un cliente in meno di 5 secondi.
+
+---
+
 ## Gestione Clienti
 
 □ Ricerca clienti migliorata

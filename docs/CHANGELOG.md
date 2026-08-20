@@ -35,13 +35,13 @@ Data: Agosto 2026
 
 v auth.js
 
-☐ coach.js
+v coach.js
 
-☐ client.js
+v client.js
 
 ☐ workouts.js
 
-☐ charts.js
+v charts.js
 
 V storage.js
 
